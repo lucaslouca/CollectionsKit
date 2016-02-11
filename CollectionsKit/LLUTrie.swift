@@ -32,8 +32,8 @@ public class LLUTrie {
             return self.wordCount
         } else {
             let firstChar = firstCharacter(word)
-            if (edges[firstChar] != nil) {
-                return edges[firstChar]!.countWords(tail(word))
+            if let trie = edges[firstChar] {
+                return trie.countWords(tail(word))
             } else {
                 return 0
             }
@@ -50,8 +50,8 @@ public class LLUTrie {
             return self.prefixCount
         } else {
             let firstChar = firstCharacter(prefix)
-            if (edges[firstChar] != nil) {
-                return edges[firstChar]!.countPrefixes(tail(prefix))
+            if let trie = edges[firstChar] {
+                return trie.countPrefixes(tail(prefix))
             } else {
                 return 0
             }
@@ -93,8 +93,8 @@ public class LLUTrie {
             return words
         } else {
             let firstChar = firstCharacter(prefix)
-            if (edges[firstChar] != nil) {
-                let words = edges[firstChar]!.wordsWithPrefix(tail(prefix), currentWord:"\(currentWord)\(firstChar)")
+            if let trie = edges[firstChar] {
+                let words = trie.wordsWithPrefix(tail(prefix), currentWord:"\(currentWord)\(firstChar)")
                 
                 return words
             } else {
@@ -115,8 +115,8 @@ public class LLUTrie {
         } else {
             var removedWord = false
             let firstChar = firstCharacter(word)
-            if (edges[firstChar] != nil) {
-                removedWord = edges[firstChar]!.removeWord(tail(word))
+            if let trie = edges[firstChar] {
+                removedWord = trie.removeWord(tail(word))
                 if (removedWord) {
                     prefixCount--
                     if (prefixCount == 0) {
