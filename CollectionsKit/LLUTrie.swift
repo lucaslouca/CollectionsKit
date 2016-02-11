@@ -66,7 +66,6 @@ public class LLUTrie {
             let firstChar = firstCharacter(prefix)
             if (edges[firstChar] != nil) {
                 let words = edges[firstChar]!.wordsWithPrefix(tail(prefix), currentWord:"\(currentWord)\(firstChar)")
-                
                 return words
             } else {
                 return []
