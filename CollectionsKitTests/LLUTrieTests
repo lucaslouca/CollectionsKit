@@ -1,0 +1,36 @@
+//
+//  CollectionsKitTests.swift
+//  CollectionsKitTests
+//
+//  Created by Lucas Louca on 10/02/16.
+//  Copyright © 2016 Lucas Louca. All rights reserved.
+//
+
+import XCTest
+@testable import CollectionsKit
+
+class LLUTrieTests: XCTestCase {
+    
+    var trie: LLUTrie!
+    
+    override func setUp() {
+        super.setUp()
+        self.trie = LLUTrie()
+    }
+    
+    func testAdd() {
+        trie.insert("taxi")
+        XCTAssertEqual(trie.wordsWithPrefix(""), ["taxi"])
+    }
+    
+    func testRemove() {
+        trie.add("test")
+        trie.add("test")
+        trie.add("t")
+        trie.add("tall")
+        trie.add("taxi")
+        trie.add("a")
+        trie.removeWord("taxi")
+        XCTAssertEqual(trie.wordsWithPrefix(""), ["t", "test", "tall", "a"])
+    }
+}
