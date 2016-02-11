@@ -70,7 +70,7 @@ public class LLUTrie {
             let firstChar = firstCharacter(word)
             
             if (edges[firstChar] == nil) {
-                edges[firstChar] = LLUTrie() 
+                edges[firstChar] = LLUTrie()
             }
             
             edges[firstChar]!.add(tail(word))
@@ -81,7 +81,7 @@ public class LLUTrie {
         if (prefix.characters.count == 0) {
             // Return all available words
             var words:[String] = []
- 
+            
             if (self.wordCount > 0) {
                 words.append(currentWord)
             }
@@ -89,7 +89,7 @@ public class LLUTrie {
             for (character, _) in self.edges {
                 words += self.wordsWithPrefix(String(character), currentWord:"\(currentWord)")
             }
-
+            
             return words
         } else {
             let firstChar = firstCharacter(prefix)
@@ -120,7 +120,7 @@ public class LLUTrie {
                 if (removedWord) {
                     prefixCount--
                     if (prefixCount == 0) {
-                        edges[firstChar] = nil    
+                        edges[firstChar] = nil
                     }
                 }
             }
@@ -145,5 +145,5 @@ public class LLUTrie {
     private func firstCharacter(word:String) -> Character {
         return word[word.startIndex.advancedBy(0)]
     }
-
+    
 }

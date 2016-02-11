@@ -16,6 +16,10 @@
 		A029BDB31C6BA74C002F9E08 /* LLUStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A029BDAE1C6BA74C002F9E08 /* LLUStack.swift */; };
 		A029BDB41C6BA74C002F9E08 /* LLUTrie.swift in Sources */ = {isa = PBXBuildFile; fileRef = A029BDAF1C6BA74C002F9E08 /* LLUTrie.swift */; };
 		A0D5FC8A1C6CF19E006BB95E /* LLUTrieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D5FC891C6CF19E006BB95E /* LLUTrieTests.swift */; };
+		A0D5FC8C1C6D1DA3006BB95E /* LLUFibonacciHeapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D5FC8B1C6D1DA3006BB95E /* LLUFibonacciHeapTests.swift */; };
+		A0D5FC8E1C6D1FA7006BB95E /* LLUQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D5FC8D1C6D1FA7006BB95E /* LLUQueueTests.swift */; };
+		A0D5FC901C6D1FFC006BB95E /* LLUStackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D5FC8F1C6D1FFC006BB95E /* LLUStackTests.swift */; };
+		A0D5FC921C6D20A0006BB95E /* LLUGridTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D5FC911C6D20A0006BB95E /* LLUGridTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +45,10 @@
 		A029BDAE1C6BA74C002F9E08 /* LLUStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LLUStack.swift; sourceTree = "<group>"; };
 		A029BDAF1C6BA74C002F9E08 /* LLUTrie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LLUTrie.swift; sourceTree = "<group>"; };
 		A0D5FC891C6CF19E006BB95E /* LLUTrieTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LLUTrieTests.swift; sourceTree = "<group>"; };
+		A0D5FC8B1C6D1DA3006BB95E /* LLUFibonacciHeapTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LLUFibonacciHeapTests.swift; sourceTree = "<group>"; };
+		A0D5FC8D1C6D1FA7006BB95E /* LLUQueueTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LLUQueueTests.swift; sourceTree = "<group>"; };
+		A0D5FC8F1C6D1FFC006BB95E /* LLUStackTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LLUStackTests.swift; sourceTree = "<group>"; };
+		A0D5FC911C6D20A0006BB95E /* LLUGridTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LLUGridTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +106,10 @@
 			isa = PBXGroup;
 			children = (
 				A0D5FC891C6CF19E006BB95E /* LLUTrieTests.swift */,
+				A0D5FC8D1C6D1FA7006BB95E /* LLUQueueTests.swift */,
+				A0D5FC911C6D20A0006BB95E /* LLUGridTests.swift */,
+				A0D5FC8B1C6D1DA3006BB95E /* LLUFibonacciHeapTests.swift */,
+				A0D5FC8F1C6D1FFC006BB95E /* LLUStackTests.swift */,
 				A029BDA01C6BA736002F9E08 /* CollectionsKitTests.swift */,
 				A029BDA21C6BA736002F9E08 /* Info.plist */,
 			);
@@ -224,8 +236,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0D5FC901C6D1FFC006BB95E /* LLUStackTests.swift in Sources */,
 				A029BDA11C6BA736002F9E08 /* CollectionsKitTests.swift in Sources */,
+				A0D5FC8C1C6D1DA3006BB95E /* LLUFibonacciHeapTests.swift in Sources */,
+				A0D5FC921C6D20A0006BB95E /* LLUGridTests.swift in Sources */,
 				A0D5FC8A1C6CF19E006BB95E /* LLUTrieTests.swift in Sources */,
+				A0D5FC8E1C6D1FA7006BB95E /* LLUQueueTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -47,7 +47,10 @@ class LLUTrieTests: XCTestCase {
     
     func testCountPrefixes() {
         trie.add("taxi")
-        XCTAssertEqual(trie.countPrefixes("taxi"), 1)
+        XCTAssertEqual(trie.countPrefixes("taxi"), 0)
+        XCTAssertEqual(trie.countPrefixes("tax"), 1)
+        trie.add("test")
+        XCTAssertEqual(trie.countPrefixes("t"), 2)
     }
     
     func testWordsWithPrefix() {

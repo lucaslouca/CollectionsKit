@@ -23,7 +23,7 @@ public class LLUStack<T>: CustomStringConvertible {
     public func push(item:T) {
         items.append(item)
     }
-
+    
     /// Removes the item at the top of this stack and returns that item.
     ///
     /// - Returns: The item at the top of this stack
