@@ -23,14 +23,17 @@ class LLUTrieTests: XCTestCase {
         XCTAssertEqual(trie.wordsWithPrefix(""), ["taxi"])
     }
     
-    func testRemove() {
+    func testRemoveExistingWord() {
         trie.add("test")
-        trie.add("test")
-        trie.add("t")
-        trie.add("tall")
         trie.add("taxi")
-        trie.add("a")
         trie.removeWord("taxi")
-        XCTAssertEqual(trie.wordsWithPrefix(""), ["t", "test", "tall", "a"])
+        XCTAssertEqual(trie.wordsWithPrefix(""), ["test"])
+    }
+    
+    func testRemoveNonExistingWord() {
+        trie.add("test")
+        trie.add("taxi")
+        trie.removeWord("hello")
+        XCTAssertEqual(trie.wordsWithPrefix(""), ["test", "taxi"])
     }
 }
