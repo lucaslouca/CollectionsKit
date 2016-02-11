@@ -1,8 +1,8 @@
 //
-//  CollectionsKitTests.swift
-//  CollectionsKitTests
+//  LLUTrieTests.swift
+//  LLUTrieTests
 //
-//  Created by Lucas Louca on 10/02/16.
+//  Created by Lucas Louca on 11/02/16.
 //  Copyright © 2016 Lucas Louca. All rights reserved.
 //
 
@@ -19,8 +19,11 @@ class LLUTrieTests: XCTestCase {
     }
     
     func testAdd() {
-        trie.insert("taxi")
+        trie.add("taxi")
         XCTAssertEqual(trie.words, ["taxi"])
+        
+        trie.add("test")
+        XCTAssertEqual(trie.words, ["test", "taxi"])
     }
     
     func testRemoveExistingWord() {
