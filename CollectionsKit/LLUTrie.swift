@@ -20,13 +20,13 @@ public class LLUTrie {
         }
     }
     
-    public func countWordsWithPrefix(prefix:String) -> Int {
+    public func countPrefixes(prefix:String) -> Int {
         if (prefix.characters.count == 0) {
             return self.prefixCount
         } else {
             let firstChar = firstCharacter(prefix)
             if (edges[firstChar] != nil) {
-                return edges[firstChar]!.countWordsWithPrefix(tail(prefix))
+                return edges[firstChar]!.countPrefixes(tail(prefix))
             } else {
                 return 0
             }
@@ -66,6 +66,7 @@ public class LLUTrie {
             let firstChar = firstCharacter(prefix)
             if (edges[firstChar] != nil) {
                 let words = edges[firstChar]!.wordsWithPrefix(tail(prefix), currentWord:"\(currentWord)\(firstChar)")
+                
                 return words
             } else {
                 return []
