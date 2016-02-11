@@ -74,20 +74,24 @@ public class LLUTrie {
         }
     }
     
-    public func removeWord(word:String) -> Int {
+    public func removeWord(word:String) -> Bool {
         if (word.characters.count == 0) {
-            return --wordCount
+            --wordCount
+            return true
         } else {
+            var removedWord = false
             let firstChar = firstCharacter(word)
             if (edges[firstChar] != nil) {
-                let result = edges[firstChar]!.removeWord(tail(word))
-                if (result == 0) {
-                    edges[firstChar] = nil 
+                removedWord = edges[firstChar]!.removeWord(tail(word))
+                if (removedWord) {
                     prefixCount--
+                    if (prefixCount == 0) {
+                        edges[firstChar] = nil    
+                    }
                 }
             }
             
-            return max(prefixCount, wordCount)
+            return removedWord
         }
     }
     
