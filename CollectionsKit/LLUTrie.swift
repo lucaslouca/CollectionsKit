@@ -11,7 +11,7 @@ public class LLUTrie {
         edges = [:]
     }
     
-    public func contains(word:String) -> Bool {
+    public func containsWord(word:String) -> Bool {
         return countWords(word) > 0
     }
     
