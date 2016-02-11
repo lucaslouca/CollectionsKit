@@ -20,20 +20,20 @@ class LLUTrieTests: XCTestCase {
     
     func testAdd() {
         trie.insert("taxi")
-        XCTAssertEqual(trie.wordsWithPrefix(""), ["taxi"])
+        XCTAssertEqual(trie.words, ["taxi"])
     }
     
     func testRemoveExistingWord() {
         trie.add("test")
         trie.add("taxi")
         trie.removeWord("taxi")
-        XCTAssertEqual(trie.wordsWithPrefix(""), ["test"])
+        XCTAssertEqual(trie.words, ["test"])
     }
     
     func testRemoveNonExistingWord() {
         trie.add("test")
         trie.add("taxi")
         trie.removeWord("hello")
-        XCTAssertEqual(trie.wordsWithPrefix(""), ["test", "taxi"])
+        XCTAssertEqual(trie.words, ["test", "taxi"])
     }
 }
