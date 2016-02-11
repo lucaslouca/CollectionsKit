@@ -3,6 +3,10 @@ public class LLUTrie {
     private var prefixCount:Int = 0
     private var edges:[Character: LLUTrie]
     
+    public var words:[String] {
+        return self.wordsWithPrefix("")
+    }
+    
     public init() {
         edges = [:]
     }
