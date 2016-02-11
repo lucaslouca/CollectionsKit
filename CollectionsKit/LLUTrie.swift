@@ -52,8 +52,8 @@ public class LLUTrie {
         if (prefix.characters.count == 0) {
             // Return all available words
             var words:[String] = []
-            
-            if (self.edges.count == 0) {
+ 
+            if (self.wordCount > 0) {
                 words.append(currentWord)
             }
             
@@ -71,6 +71,23 @@ public class LLUTrie {
             } else {
                 return []
             }
+        }
+    }
+    
+    public func removeWord(word:String) -> Int {
+        if (word.characters.count == 0) {
+            return --wordCount
+        } else {
+            let firstChar = firstCharacter(word)
+            if (edges[firstChar] != nil) {
+                let result = edges[firstChar]!.removeWord(tail(word))
+                if (result == 0) {
+                    edges[firstChar] = nil 
+                    prefixCount--
+                }
+            }
+            
+            return max(prefixCount, wordCount)
         }
     }
     
