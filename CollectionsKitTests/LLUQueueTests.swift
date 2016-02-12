@@ -1,6 +1,6 @@
 //
-//  LLUTrieTests.swift
-//  LLUTrieTests
+//  LLUQueueTests.swift
+//  LLUQueueTests
 //
 //  Created by Lucas Louca on 11/02/16.
 //  Copyright © 2016 Lucas Louca. All rights reserved.
