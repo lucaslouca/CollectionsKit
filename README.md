@@ -9,7 +9,7 @@ Install [Carthage](https://github.com/Carthage/Carthage/releases).
 ##### Integrate CollectionsKit into your project
 ```
 $ cd ~/Path/To/Your/Project
-$ echo 'github "lucaslouca/CollectionsKit" "v0.1.0"' > Cartfile
+$ echo 'github "lucaslouca/CollectionsKit" >= 0.1.0' > Cartfile
 $ carthage update --platform iOS
 ```
 
