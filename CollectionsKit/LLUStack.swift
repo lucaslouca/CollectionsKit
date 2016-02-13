@@ -1,3 +1,10 @@
+//
+//  LLUStack.swift
+//  CollectionsKit
+//
+//  Created by Lucas Louca on 13/02/16.
+//  Copyright © 2016 Lucas Louca. All rights reserved.
+//
 public class LLUStack<T>: CustomStringConvertible {
     private var items:[T]
     

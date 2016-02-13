@@ -1,6 +1,6 @@
 //
 //  LLUFibonacciHeap.swift
-//  swift-collections-library
+//  CollectionsKit
 //
 //  Created by Lucas Louca on 09/02/16.
 //  Copyright © 2016 Lucas Louca. All rights reserved.

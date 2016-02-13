@@ -1,5 +1,6 @@
 //
 //  LLUGrid.swift
+//  CollectionsKit
 //
 //  Created by Lucas Louca on 06/02/16.
 //  Copyright © 2016 Lucas Louca. All rights reserved.

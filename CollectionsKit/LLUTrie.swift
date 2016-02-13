@@ -1,3 +1,10 @@
+//
+//  LLUTrie.swift
+//  CollectionsKit
+//
+//  Created by Lucas Louca on 13/02/16.
+//  Copyright © 2016 Lucas Louca. All rights reserved.
+//
 public class LLUTrie {
     private var wordCount:Int = 0
     private var prefixCount:Int = 0
