@@ -22,7 +22,7 @@ public class LLUDirectedGraph<T: Hashable> {
     }
     
     /// Create a new LLUDirectedGraph
-    init() {
+    public init() {
         nodeToNeighbors = [:]
     }
     
