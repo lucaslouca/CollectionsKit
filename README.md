@@ -30,6 +30,7 @@ import CollectionsKit
 - [Grid](#llugrid)
 - [Stack](#llustack)
 - [Trie](#llutrie)
+- [Directed Graph](#lludirectedgraph)
 
 #### LLUFibonacciHeap
 An implementation of a [Fibonacci heap](https://en.wikipedia.org/wiki/Fibonacci_heap) data structure for priority queue operations.
@@ -128,6 +129,33 @@ trie.add("taxi")
 ###### Search words by prefix
 ```Swift
 trie.wordsWithPrefix("ta") // ["taxi", "tall"]
+```
+
+#### LLUDirectedGraph
+An implementation of a directed graph data structure.
+
+##### Sample Usage
+###### Create a new graph
+```Swift
+var graph = LLUDirectedGraph<Int>()
+```
+
+###### Add nodes
+```Swift
+graph.addNode(1)
+graph.addNode(2)
+graph.addNode(3)
+```
+
+###### Add edges
+```Swift
+try! graph.addEdge(1, destination: 2)
+try! graph.addEdge(2, destination: 3)
+```
+
+###### Retrieve neighbors
+```Swift
+let neighbors = try! graph.neighborsOf(1)
 ```
 
 ###License
