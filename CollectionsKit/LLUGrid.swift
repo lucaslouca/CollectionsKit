@@ -20,7 +20,7 @@ public class LLUGrid<T> {
         return row >= 0 && row < rows && column >= 0 && column < columns
     }
     
-    public subscript(col:Int, row:Int) -> T {
+    public subscript(row:Int, col:Int) -> T {
         get{
             assert(indexIsValidForRow(row, column: col), "Index out of range")
             return matrix[Int(columns * row + col)]
