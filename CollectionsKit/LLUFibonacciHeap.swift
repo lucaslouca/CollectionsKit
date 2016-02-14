@@ -18,7 +18,7 @@ public class LLUFibonacciHeapNode<T: Comparable>: CustomStringConvertible, Equat
     var prev:LLUFibonacciHeapNode<T>?
     var parent:LLUFibonacciHeapNode<T>?
     var child:LLUFibonacciHeapNode<T>?
-    var key:T
+    public var key:T
     var isMarked = false
     
     init(key:T) {
