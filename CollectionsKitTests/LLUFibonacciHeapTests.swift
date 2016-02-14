@@ -59,16 +59,22 @@ class LLUFibonacciHeapTests: XCTestCase {
         let node4 = DijkstraNode(row: 1, column: 1)
         node4.distance = 1000
         
-        heap2.enqueue(node1)
+        let heapNode1 = heap2.enqueue(node1)
         let heapNode2 = heap2.enqueue(node2)
-        heap2.enqueue(node3)
-        heap2.enqueue(node4)
+        let _ = heap2.enqueue(node3)
+        let heapNode4 = heap2.enqueue(node4)
         
         XCTAssertEqual(heap2.poll(), node3)
         
         node2.distance = 1
         heap2.reprioritize(heapNode2)
         XCTAssertEqual(heap2.poll(), node2)
+        
+        node1.distance = 1
+        heap2.reprioritize(heapNode1)
+        node4.distance = 2
+        heap2.reprioritize(heapNode4)
+        XCTAssertEqual(heap2.poll(), node1)
     }
     
     func testPoll() {

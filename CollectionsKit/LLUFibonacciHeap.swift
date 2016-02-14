@@ -202,7 +202,7 @@ public class LLUFibonacciHeap<T: Comparable> {
     private func cutOffNode(node:LLUFibonacciHeapNode<T>) {
         node.isMarked = false
         
-        guard node.parent == nil else {
+        guard node.parent != nil else {
             return
         }
         
