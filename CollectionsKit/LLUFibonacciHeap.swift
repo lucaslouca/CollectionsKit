@@ -8,16 +8,18 @@
 
 import Foundation
 
-private func ==<T>(lhs: LLUFibonacciHeapNode<T>, rhs:LLUFibonacciHeapNode<T>) -> Bool {
+public func ==<T>(lhs: LLUFibonacciHeapNode<T>, rhs:LLUFibonacciHeapNode<T>) -> Bool {
     return ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
 }
 
-private class LLUFibonacciHeapNode<T: Comparable>: CustomStringConvertible, Equatable {
+public class LLUFibonacciHeapNode<T: Comparable>: CustomStringConvertible, Equatable {
     var degree:Int = 0
     var next:LLUFibonacciHeapNode<T>?
     var prev:LLUFibonacciHeapNode<T>?
+    var parent:LLUFibonacciHeapNode<T>?
     var child:LLUFibonacciHeapNode<T>?
     var key:T
+    var isMarked = false
     
     init(key:T) {
         self.key = key
@@ -26,7 +28,7 @@ private class LLUFibonacciHeapNode<T: Comparable>: CustomStringConvertible, Equa
     }
     
     
-    var description: String {
+    public var description: String {
         return "[\(key)]"
     }
 }
@@ -57,12 +59,14 @@ public class LLUFibonacciHeap<T: Comparable> {
     ///
     /// - Parameters:
     ///     - element: The element to add
-    public func enqueue(element:T) {
+    public func enqueue(element:T) -> LLUFibonacciHeapNode<T> {
         let node = LLUFibonacciHeapNode<T>(key:element)
         
         self.min = mergeLists(one:node, two:min)
         
         count++
+        
+        return node
     }
     
     /// Retrieves, but does not remove, the next element in the heap with respect to the given comparator.
@@ -97,6 +101,14 @@ public class LLUFibonacciHeap<T: Comparable> {
                 self.min = self.min!.next
             }
             
+            // Remove parent releationship to the minElem
+            if (minElem?.child != nil) {
+                var current = minElem?.child
+                repeat {
+                    current?.parent = nil
+                    current = current?.next
+                } while (current != minElem?.child)
+            }
             
             self.min = mergeLists(one: self.min, two:minElem!.child)
             
@@ -135,8 +147,9 @@ public class LLUFibonacciHeap<T: Comparable> {
                         
                         let maxNode = comparator(obj1: node.key , obj2: otherNode!.key) ? otherNode : node
                         let minNode = comparator(obj1: node.key , obj2: otherNode!.key) ? node : otherNode
-                        // Remove maxNode from the root list
                         
+                        
+                        // Remove maxNode from the root list
                         maxNode!.next!.prev = maxNode!.prev
                         maxNode!.prev!.next = maxNode!.next
                         
@@ -144,6 +157,12 @@ public class LLUFibonacciHeap<T: Comparable> {
                         // Make it a standalone tree
                         maxNode!.next = maxNode
                         maxNode!.prev = maxNode
+                        
+                        // Give it a parent
+                        maxNode!.parent = minNode
+                        
+                        // Clear max's mark, since it can now lose another child
+                        maxNode!.isMarked = false
                         
                         // Put it into the minNode's child list
                         minNode!.child = mergeLists(one:minNode!.child, two:maxNode)
@@ -168,6 +187,57 @@ public class LLUFibonacciHeap<T: Comparable> {
     public func clear() {
         self.min = nil
         count = 0
+    }
+    
+    public func reprioritize(node:LLUFibonacciHeapNode<T>) {
+        if (node.parent != nil && comparator(obj1: node.key , obj2: node.parent!.key)) {
+            cutOffNode(node)
+        }
+        
+        if (comparator(obj1: node.key , obj2: self.min!.key)) {
+            self.min = node
+        }
+    }
+    
+    private func cutOffNode(node:LLUFibonacciHeapNode<T>) {
+        node.isMarked = false
+        
+        guard node.parent == nil else {
+            return
+        }
+        
+        // Cut it off from the siblings
+        if (node.next != node) {
+            node.prev!.next = node.next
+            node.next?.prev = node.prev
+        }
+        
+        // If the node's parent point to this node, make it point to an other node (arbitrarily)
+        if (node.parent?.child == node) {
+            if (node.next != node) {
+                node.parent!.child = node.next
+            } else {
+                node.parent!.child = nil
+            }
+        }
+        
+        // We just cut off one child from the node's parent
+        node.parent!.degree--
+        
+        // Make it a standalone node
+        node.next = node
+        node.prev = node
+        
+        // 'enqueue' it again
+        self.min = mergeLists(one: node, two: self.min)
+        
+        if (node.parent!.isMarked) {
+            cutOffNode(node.parent!)
+        } else {
+            node.parent!.isMarked = true
+        }
+        
+        node.parent = nil
     }
     
     private func mergeLists(one one:LLUFibonacciHeapNode<T>?, two:LLUFibonacciHeapNode<T>?) -> LLUFibonacciHeapNode<T>? {

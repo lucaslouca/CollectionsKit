@@ -9,6 +9,35 @@
 import XCTest
 @testable import CollectionsKit
 
+private class DijkstraNode: Comparable, Hashable, CustomStringConvertible   {
+    var row:Int
+    var column:Int
+    var distance:Int = 0
+    
+    init(row:Int, column:Int) {
+        self.row = row
+        self.column = column
+    }
+    
+    var hashValue : Int {
+        get {
+            return "\(self.row),\(self.column)".hashValue
+        }
+    }
+    
+    private var description: String {
+        return "(\(self.row),\(self.column))"
+    }
+}
+
+private func < (lhs: DijkstraNode, rhs: DijkstraNode) -> Bool {
+    return lhs.distance < rhs.distance
+}
+
+private func == (lhs: DijkstraNode, rhs: DijkstraNode) -> Bool {
+    return (lhs.row == rhs.row && lhs.column == rhs.column)
+}
+
 class LLUFibonacciHeapTests: XCTestCase {
     
     var heap: LLUFibonacciHeap<Int>!
@@ -16,6 +45,30 @@ class LLUFibonacciHeapTests: XCTestCase {
     override func setUp() {
         super.setUp()
         self.heap = LLUFibonacciHeap<Int>()
+    }
+    
+    func testReprioritize() {
+        let heap2 = LLUFibonacciHeap<DijkstraNode>()
+        
+        let node1 = DijkstraNode(row: 0, column: 0)
+        node1.distance = 4
+        let node2 = DijkstraNode(row: 0, column: 1)
+        node2.distance = 1000
+        let node3 = DijkstraNode(row: 1, column: 0)
+        node3.distance = 3
+        let node4 = DijkstraNode(row: 1, column: 1)
+        node4.distance = 1000
+        
+        heap2.enqueue(node1)
+        let heapNode2 = heap2.enqueue(node2)
+        heap2.enqueue(node3)
+        heap2.enqueue(node4)
+        
+        XCTAssertEqual(heap2.poll(), node3)
+        
+        node2.distance = 1
+        heap2.reprioritize(heapNode2)
+        XCTAssertEqual(heap2.poll(), node2)
     }
     
     func testPoll() {
