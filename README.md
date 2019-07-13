@@ -1,7 +1,7 @@
 # CollectionsKit
 CollectionsKit gives the programmer access to collection data structures.
 
-###Setup
+### Setup
 #### Carthage
 ##### Installing Carthage
 Install [Carthage](https://github.com/Carthage/Carthage/releases).
@@ -158,7 +158,7 @@ try! graph.addEdge(2, destination: 3)
 let neighbors = try! graph.neighborsOf(1)
 ```
 
-###License
+### License
 ```
 This is free and unencumbered software released into the public domain.
 
